@@ -7,7 +7,8 @@ type Dato = {
 interface Trans {
   tipo: string,
   detalle: string,
-  monto : number
+  monto : number,
+  fecha: number
 }
 let presupesto = 0
 let gastoTotal:number[] = []
@@ -105,7 +106,8 @@ form.addEventListener('submit', (e) => {
     let mandar: Trans = {
     detalle: referencia,
     monto: Number(monto),
-    tipo: select
+    tipo: select,
+    fecha: Date.now()
   }
   
   if(select === 'salida') {
@@ -127,9 +129,10 @@ function pintarTrnas() {
   app.innerHTML = ''
   InOut.forEach(ino => {
     app.innerHTML += `
-      <div class="${ino.tipo}">
+      <div class="${ino.tipo}" >
         <h4>${ino.detalle}</h4>
         <p>${ino.monto}</p>
+        <p class="fecha">${new Intl.DateTimeFormat('es-Es').format(new Date(ino.fecha))}</p>
       </div>
     `
   })
