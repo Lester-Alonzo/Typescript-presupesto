@@ -22,6 +22,7 @@ const cambio = document.querySelector<HTMLSpanElement>('#presupuestoS')!
 const pGasto = document.querySelector<HTMLSpanElement>('#gasto')!
 const pEntrada = document.querySelector<HTMLSpanElement>('#entrada')!
 const pRestante = document.querySelector<HTMLSpanElement>('#restante')!
+const todo = document.querySelector<HTMLButtonElement>('#todo')!
 
 
 addEventListener('load', pregunta)
@@ -45,10 +46,11 @@ btnModal?.addEventListener('click', () => {
 })
 
 function Pintar() {
-  cambio.innerText = `Inicial: ${presupesto} Mas Entradas: ${entradaTotal.length != 0? presupesto + entradaTotal.reduce((a, b) => a + b): presupesto}`
-  pGasto.innerText = `${gastoTotal.reduce((a, b) => a + b, 0)}`
-  pRestante.innerText = `${entradaTotal.length != 0?(entradaTotal.reduce((a, b) => a + b) + presupesto) - gastoTotal.reduce((a, b) => a + b, 0)  : presupesto - gastoTotal.reduce((a, b) => a + b, 0)}`
-  pEntrada.innerText = `${entradaTotal.reduce((a, b) => a + b, 0)}`
+  cambio.innerText = `${Convert(presupesto)}`
+  todo.innerHTML = `${entradaTotal.length != 0? Convert(presupesto + entradaTotal.reduce((a, b) => a + b)): Convert(presupesto)}`
+  pGasto.innerText = `${Convert(gastoTotal.reduce((a, b) => a + b, 0))}`
+  pRestante.innerText = `${entradaTotal.length != 0?Convert((entradaTotal.reduce((a, b) => a + b) + presupesto) - gastoTotal.reduce((a, b) => a + b, 0))  : Convert(presupesto - gastoTotal.reduce((a, b) => a + b, 0))}`
+  pEntrada.innerText = `${Convert(entradaTotal.reduce((a, b) => a + b, 0))}`
 }
 
 function pregunta() {
@@ -131,9 +133,12 @@ function pintarTrnas() {
     app.innerHTML += `
       <div class="${ino.tipo}" >
         <h4>${ino.detalle}</h4>
-        <p>${ino.monto}</p>
+        <p>${Convert(ino.monto)}</p>
         <p class="fecha">${new Intl.DateTimeFormat('es-Es').format(new Date(ino.fecha))}</p>
       </div>
     `
   })
+}
+function Convert(int: number) {
+  return new Intl.NumberFormat('en-EN', {style:"currency", currency:'USD'}).format(int)
 }

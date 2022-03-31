@@ -22,6 +22,7 @@ span{
   display:flex;
   justify-content:flex-start;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 .form input{
@@ -55,7 +56,7 @@ span{
   color: black;
 }
 .salida{
-  background-color: rgba(240, 193, 107, 0.815);
+  background-color: rgba(240, 107, 107, 0.815);
   position: relative;
 }
 .salida::before{
@@ -82,12 +83,39 @@ span{
   color: rgba(255, 255, 255, 0.589);
 }
 .modal{
-  background-color: rgba(50, 117, 50, 0.733);
+  background-color: rgba(64, 138, 199, 0.733);
   border-radius: 12px;
-  width: 40%;
+  width: 60%;
   margin: 0 auto;
   text-align: center;
   padding: 2rem 0;
+}
+@media only screen and (max-width:550px) {
+  .modal{
+    max-width: 100%;
+    width: 100%;
+  }
+  .modal input{
+    width: 95%;
+  }
+}
+
+.modal input{
+  padding: 0.2rem;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+.modal button{
+  padding: 0.5rem;
+  border: none;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  background-color: rgb(90, 219, 144) ;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 1rem;
 }
 #iPresupuesto{
   display: block;

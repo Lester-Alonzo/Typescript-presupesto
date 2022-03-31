@@ -9,7 +9,8 @@
   <body>
     <div id="contenedor">
     <div id="tarjeta">
-      <p >Presupuesto: <span title="Cambiar presupuesto?" id="presupuestoS"></span></p>
+      <p >Presupuesto Inicial: <span title="Cambiar presupuesto?" id="presupuestoS"></span></p>
+      <p >Presupuesto con Entradas: <span id="todo"></span></p>
       <p>Gasto total: <span id="gasto"></span></p>
       <p>Entrada total: <span id="entrada"></span></p>
       <p>restante: <span id="restante"></span></p>
@@ -27,9 +28,9 @@
 
     </div>
     <div id="iPresupesto" class="modal show">
-     <h3>Ingrese su presupesto:</h3> 
+     <h3>Ingrese su presupuesto:</h3> 
       <input type="number" placeholder="Presupuesto" id="pre">
-      <button id="btnAdd">Inicar</button>
+      <button id="btnAdd">Iniciar</button>
     </div>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
